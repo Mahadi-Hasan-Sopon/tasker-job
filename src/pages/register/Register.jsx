@@ -5,9 +5,13 @@ import { Divider } from "antd";
 import { GoogleCircleFilled } from "@ant-design/icons";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
+// import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
+  // const { createUserWithEmail } = useAuth();
+
   const onSubmit = (data) => {
     if (data.password !== data.confirm_password) {
       Swal.fire({
@@ -24,6 +28,9 @@ const Register = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Register | Tasker</title>
+      </Helmet>
       <ContentBox>
         <section className="bg-gray-50 mt-0.5">
           <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">

@@ -7,12 +7,16 @@ import WaveImage from "../../assets/meister_wave_v2.svg";
 import LeadImage from "../../assets/lead-magnet.svg";
 import { Button, Col, Divider, Image, Row, Typography } from "antd";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const { Title } = Typography;
 
 const Home = () => {
   return (
     <div className="font-inter">
+      <Helmet>
+        <title> Home | Tasker </title>
+      </Helmet>
       <ContentBox>
         <div className="banner flex flex-col items-center justify-center w-full py-16 bg-gradient-to-b from-sky-50 to-white bg-white mt-1">
           <img className="w-full" src={BannerImage} alt="Banner Image" />

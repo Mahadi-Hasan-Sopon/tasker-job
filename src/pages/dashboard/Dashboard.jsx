@@ -1,5 +1,14 @@
+import { Helmet } from "react-helmet";
+
 const Dashboard = () => {
-  return <div>Dashboard Page</div>;
+  return (
+    <div>
+      <Helmet>
+        <title>Dashboard | Tasker</title>
+      </Helmet>
+      Dashboard Page
+    </div>
+  );
 };
 
 export default Dashboard;

@@ -1,5 +1,14 @@
+import { Helmet } from "react-helmet";
+
 const Pricing = () => {
-  return <div>Pricing Page</div>;
+  return (
+    <div>
+      <Helmet>
+        <title>Pricing | Tasker</title>
+      </Helmet>
+      Pricing Page
+    </div>
+  );
 };
 
 export default Pricing;
