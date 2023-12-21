@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="382px" viewBox="0 0 1440 382" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Content 2.0/Meister Wave - Export Copy</title>
+    <defs>
+        <rect id="path-1" x="0" y="-70" width="1440" height="520"></rect>
+        <linearGradient x1="7.42313103%" y1="49.3544432%" x2="97.1131431%" y2="48.5181323%" id="linearGradient-3">
+            <stop stop-color="#FFD426" offset="0%"></stop>
+            <stop stop-color="#F7578C" offset="37.8712419%"></stop>
+            <stop stop-color="#00AAFF" offset="56.4120997%"></stop>
+            <stop stop-color="#2BD9D9" offset="79.0497633%"></stop>
+            <stop stop-color="#3DCC3D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="7.42313103%" y1="49.1653622%" x2="97.1131431%" y2="48.0840992%" id="linearGradient-4">
+            <stop stop-color="#FFD426" offset="0%"></stop>
+            <stop stop-color="#F7578C" offset="37.8712419%"></stop>
+            <stop stop-color="#00AAFF" offset="56.4120997%"></stop>
+            <stop stop-color="#2BD9D9" offset="79.0497633%"></stop>
+            <stop stop-color="#3DCC3D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="7.42313103%" y1="48.9470337%" x2="97.1131431%" y2="47.582929%" id="linearGradient-5">
+            <stop stop-color="#FFD426" offset="0%"></stop>
+            <stop stop-color="#F7578C" offset="37.8712419%"></stop>
+            <stop stop-color="#00AAFF" offset="56.4120997%"></stop>
+            <stop stop-color="#2BD9D9" offset="79.0497633%"></stop>
+            <stop stop-color="#3DCC3D" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Content-2.0/Meister-Wave---Export-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <g id="Mask"></g>
+        <g id="Group-3" mask="url(#mask-2)">
+            <g transform="translate(738.9016, 206.4503) rotate(3) translate(-738.9016, -206.4503)translate(-763.5984, -484.0257)" id="Group">
+                <g transform="translate(1502.5, 690.476) rotate(12) translate(-1502.5, -690.476)translate(50.8933, 293.1229)">
+                    <path d="M2352.50982,370.439393 L2304.54702,480.788351 C2078.38739,275.504951 1794.63076,196.633536 1435.84757,394.500458 C1077.06437,592.367381 786.219429,644.22518 547.884906,433.186624 L595.847701,322.837666 C822.007337,528.121066 1102.25559,579.598215 1432.74633,389.004688 C1763.23708,198.41116 2114.1753,159.400837 2352.50982,370.439393 Z" id="Path" fill="url(#linearGradient-3)" fill-rule="nonzero" style="mix-blend-mode: multiply;"></path>
+                    <path d="M2566.85506,376.781248 L2551.94678,531.709782 C2258.59456,227.556182 1893.83892,109.677357 1433.86913,394.05436 C973.89933,678.431362 644.161746,742.000041 335.072168,429.230543 L349.980443,274.302008 C643.332661,578.455609 1004.71944,654.208094 1428.33149,380.054378 C1851.94354,105.900663 2257.76548,64.01175 2566.85506,376.781248 Z" id="Path" fill="url(#linearGradient-4)" fill-rule="nonzero" opacity="0.300000012" style="mix-blend-mode: multiply;" transform="translate(1450.9636, 397.5445) rotate(1) translate(-1450.9636, -397.5445)"></path>
+                    <path d="M2891.97041,381.353282 L2874.5553,611.106441 C2492.2253,155.87812 2019.91273,-23.8046503 1429.43099,392.310635 C838.949253,808.42592 413.992694,898.50287 11.2430502,430.282856 L28.6581603,200.529697 C410.988157,655.758018 878.453146,772.87285 1422.11605,371.459989 C1965.77896,-29.9528728 2489.22076,-86.8667319 2891.97041,381.353282 Z" id="Path" fill="url(#linearGradient-5)" fill-rule="nonzero" opacity="0.100000001" style="mix-blend-mode: multiply;" transform="translate(1451.6067, 397.3531) rotate(2) translate(-1451.6067, -397.3531)"></path>
+                </g>
+            </g>
+        </g>
+        <g id="Avatars/Small/MeisterTask" mask="url(#mask-2)">
+            <g transform="translate(660, 130)" id="Product-Logos/MeisterTask-Glyph">
+                <path d="M74.9919766,3.95465544 C118.48582,15.6284848 126.218908,36.6315311 115.950818,75.0173048 C105.682729,113.403079 88.5018671,127.719174 45.0080234,116.045345 C1.51417968,104.371515 -6.21890801,83.3684689 4.04918163,44.9826952 C14.3172713,6.59692146 31.4981329,-7.71917396 74.9919766,3.95465544 Z" id="Rectangle-9" fill="#00AAFF"></path>
+                <g id="Product-Logos/MeisterTask/Icon" transform="translate(23.833, 15.583)" fill="#FFFFFF">
+                    <path d="M43.8867228,61.7788279 L43.8867228,7.04421386 C43.8867228,4.19649562 46.1952545,1.88796386 49.0429728,1.88796386 C51.890691,1.88796386 54.1992228,4.19649562 54.1992228,7.04421386 L54.1992228,66.9350779 C54.1992228,69.7827962 51.890691,72.0913279 49.0429728,72.0913279 L24.936319,72.0913279 C22.0886008,72.0913279 19.780069,69.7827962 19.780069,66.9350779 C19.780069,64.0873597 22.0886008,61.7788279 24.936319,61.7788279 L43.8867228,61.7788279 Z" id="Rectangle-7" transform="translate(36.9896, 36.9896) rotate(-315) translate(-36.9896, -36.9896)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
