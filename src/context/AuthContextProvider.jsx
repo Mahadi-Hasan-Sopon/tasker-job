@@ -48,16 +48,16 @@ const AuthContextProvider = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
 
-      if (currentUser) {
-        const userDetails = { email: currentUser.email };
-        console.log(userDetails);
-        // axiosSecure
-        //   .post("/jwt", userDetails)
-        //   .then((data) => {
-        //     console.log(data.data?.message);
-        //   })
-        //   .catch((err) => console.log(err));
-      }
+      // if (currentUser) {
+      //   const userDetails = { email: currentUser.email };
+      //   console.log(userDetails);
+      //   // axiosSecure
+      //   //   .post("/jwt", userDetails)
+      //   //   .then((data) => {
+      //   //     console.log(data.data?.message);
+      //   //   })
+      //   //   .catch((err) => console.log(err));
+      // }
     });
 
     return () => unSubscribe();

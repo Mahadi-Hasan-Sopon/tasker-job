@@ -11,7 +11,8 @@ import uploadImage from "../../utils/uploadImage";
 
 const Register = () => {
   const { register, handleSubmit } = useForm();
-  const { createUserWithEmail, updateUserProfile } = useAuth();
+  const { createUserWithEmail, updateUserProfile, signInWithGoogle } =
+    useAuth();
 
   const onSubmit = async (data) => {
     if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(data.email)) {
@@ -57,14 +58,6 @@ const Register = () => {
       console.log(profileImage);
 
       // save user to database
-      // const { data } = await axiosPublic.post("/users", {
-      //   email: email,
-      //   name: name,
-      //   image: profileImage,
-      // });
-      // if (!data.insertedId) {
-      //   Swal.fire("Failed creating user");
-      // }
 
       // update user name & avatar
       await updateUserProfile(register.user, data.name, profileImage).then(
@@ -76,6 +69,17 @@ const Register = () => {
       console.log(error);
       Swal.fire(error?.message);
     }
+  };
+
+  const handleGoogleLogin = async () => {
+    await signInWithGoogle()
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+        Swal.fire(error?.message);
+      });
   };
 
   return (
@@ -209,9 +213,14 @@ const Register = () => {
               <p className="text-lg font-medium border-b border-b-slate-300 pb-1 inline-block">
                 Or continue with
               </p>
-              <div className="flex items-center justify-center gap-2 hover:bg-slate-100 py-2">
-                <GoogleCircleFilled className="text-4xl text-orange-400" />
-                <p className="text-xl font-medium">Google</p>
+              <div className="flex items-center justify-center gap-2 py-2">
+                <div
+                  onClick={handleGoogleLogin}
+                  className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 rounded-lg py-2 px-4"
+                >
+                  <GoogleCircleFilled className="text-4xl text-orange-400" />
+                  <p className="text-xl font-medium">Google</p>
+                </div>
               </div>
             </div>
           </div>

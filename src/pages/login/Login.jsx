@@ -1,28 +1,40 @@
 import { GoogleCircleFilled } from "@ant-design/icons";
 import { Divider } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ContentBox from "../../utils/ContentBox";
 import { useForm } from "react-hook-form";
 import Logo from "../../assets/Logo.svg";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
-// import useAuth from "../../hooks/useAuth";
+import useAuth from "../../hooks/useAuth";
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
-  // const { signInWithGoogle, loginWithEmail } = useAuth();
+  const { signInWithGoogle, loginWithEmail } = useAuth();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    if (data.password !== data.confirm_password) {
-      Swal.fire({
-        icon: "error",
-        title: "Passwords do not match",
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      return;
-    }
+  // Login With Email
+  const onSubmit = async (data) => {
+    loginWithEmail(data.email, data.password)
+      .then((user) => {
+        Swal.fire({
+          icon: "success",
+          title: "Login Successful",
+          showConfirmButton: false,
+          timer: 1500,
+          position: "top-end",
+          timerProgressBar: true,
+        });
+        console.log(user);
+        navigate("/dashboard");
+      })
+      .catch((error) => Swal.fire(error.message));
+  };
+
+  // Login With Google
+
+  const handleGoogleLogin = async () => {
+    const data = await signInWithGoogle();
     console.log(data);
   };
 
@@ -109,9 +121,14 @@ const Login = () => {
               <p className="text-lg font-medium border-b border-b-slate-300 pb-1 inline-block">
                 Or continue with
               </p>
-              <div className="flex items-center justify-center gap-2 hover:bg-slate-100 py-2">
-                <GoogleCircleFilled className="text-4xl text-orange-400" />
-                <p className="text-xl font-medium">Google</p>
+              <div className="flex items-center justify-center gap-2 py-2">
+                <div
+                  onClick={handleGoogleLogin}
+                  className="flex items-center gap-2 cursor-pointer hover:bg-slate-100 rounded-lg py-2 px-4"
+                >
+                  <GoogleCircleFilled className="text-4xl text-orange-400" />
+                  <p className="text-xl font-medium">Google</p>
+                </div>
               </div>
             </div>
           </div>
