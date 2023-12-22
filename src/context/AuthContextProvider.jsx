@@ -48,16 +48,21 @@ const AuthContextProvider = ({ children }) => {
       setUser(currentUser);
       setLoading(false);
 
-      // if (currentUser) {
-      //   const userDetails = { email: currentUser.email };
-      //   console.log(userDetails);
-      //   // axiosSecure
-      //   //   .post("/jwt", userDetails)
-      //   //   .then((data) => {
-      //   //     console.log(data.data?.message);
-      //   //   })
-      //   //   .catch((err) => console.log(err));
-      // }
+      if (currentUser) {
+        const userDetails = { email: currentUser.email };
+        fetch("http://localhost:5000/jwt", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(userDetails),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data.message);
+          });
+      }
     });
 
     return () => unSubscribe();
