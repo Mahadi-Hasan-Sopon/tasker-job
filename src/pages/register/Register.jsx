@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ContentBox from "../../utils/ContentBox";
 import Logo from "../../assets/Logo.svg";
 import { Divider } from "antd";
@@ -13,6 +13,7 @@ const Register = () => {
   const { register, handleSubmit } = useForm();
   const { createUserWithEmail, updateUserProfile, signInWithGoogle } =
     useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g.test(data.email)) {
@@ -58,11 +59,40 @@ const Register = () => {
       console.log(profileImage);
 
       // save user to database
+      const user = {
+        name: data.name,
+        email: data.email,
+        role: "user",
+        image: profileImage,
+      };
+
+      const UserResponse = await fetch("http://localhost:5000/users", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      const userData = await UserResponse.json();
+      console.log(userData);
+
+      if (userData.acknowledged && userData.insertedId) {
+        Swal.fire({
+          icon: "success",
+          title: "User Created Successfully.",
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      } else {
+        Swal.fire("User Creation Failed, Try again.");
+      }
 
       // update user name & avatar
       await updateUserProfile(register.user, data.name, profileImage).then(
         () => {
           Swal.fire("User Registration Successful.");
+          navigate("/dashboard");
         }
       );
     } catch (error) {
