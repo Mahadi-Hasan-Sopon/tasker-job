@@ -189,6 +189,23 @@ const SingleTask = ({ singleTask, tasks, setTasks }) => {
   const handleRemoveTask = () => {
     const filteredTasks = tasks.filter((task) => task._id !== singleTask._id);
     setTasks(filteredTasks);
+
+    fetch(`http://localhost:5000/todos/${singleTask._id}`, {
+      method: "DELETE",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.deletedCount > 0) {
+          Swal.fire("Deleted!", "Your task has been deleted.", "success", {
+            time: 1000,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
