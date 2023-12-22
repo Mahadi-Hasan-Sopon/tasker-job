@@ -50,7 +50,7 @@ const AuthContextProvider = ({ children }) => {
 
       if (currentUser) {
         const userDetails = { email: currentUser.email };
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://tasker-job-backend.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",

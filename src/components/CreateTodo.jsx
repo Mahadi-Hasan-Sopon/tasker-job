@@ -28,16 +28,21 @@ const CreateTodo = () => {
     console.log(todo);
     //   submit to database
     try {
-      const response = await fetch(`http://localhost:5000/todos`, {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(todo),
-      });
+      const response = await fetch(
+        `https://tasker-job-backend.vercel.app/todos`,
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          credentials: "include",
+          body: JSON.stringify(todo),
+        }
+      );
 
-      if (response.status === 400) {
+      if (response.status === 400 || !response.status === 401) {
         Swal.fire("Failed to create todo!");
+        return;
       }
       const result = await response.json();
       console.log(result);

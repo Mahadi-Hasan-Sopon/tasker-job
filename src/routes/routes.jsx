@@ -9,11 +9,13 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Pricing from "../pages/pricing/Pricing";
 import CreateTodo from "../components/CreateTodo";
+import ErrorPage from "../utils/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
             index: true,
             element: <Dashboard />,
             loader: () => {
-              return fetch("http://localhost:5000/todos", {
+              return fetch("https://tasker-job-backend.vercel.app/todos", {
                 credentials: "include",
               });
             },

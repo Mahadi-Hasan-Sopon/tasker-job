@@ -66,13 +66,16 @@ const Register = () => {
         image: profileImage,
       };
 
-      const UserResponse = await fetch("http://localhost:5000/users", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
+      const UserResponse = await fetch(
+        "https://tasker-job-backend.vercel.app/users",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        }
+      );
       const userData = await UserResponse.json();
       console.log(userData);
 

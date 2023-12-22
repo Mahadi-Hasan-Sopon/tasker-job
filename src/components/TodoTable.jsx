@@ -77,7 +77,7 @@ const Section = ({ status, todos, inProgress, completed, tasks, setTasks }) => {
   }
 
   const addItemToSection = (id) => {
-    console.log("dropped item - ", id, status);
+    // console.log("dropped item - ", id, status);
     setTasks((prevTasks) => {
       const modifiedTask = prevTasks.map((oneTask) => {
         if (oneTask._id === id) {
@@ -85,9 +85,9 @@ const Section = ({ status, todos, inProgress, completed, tasks, setTasks }) => {
         }
         return oneTask;
       });
-      console.log("modified task - ", modifiedTask);
+      // console.log("modified task - ", modifiedTask);
       // update task status to db
-      fetch(`http://localhost:5000/todos/${id}`, {
+      fetch(`https://tasker-job-backend.vercel.app/todos/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -190,7 +190,7 @@ const SingleTask = ({ singleTask, tasks, setTasks }) => {
     const filteredTasks = tasks.filter((task) => task._id !== singleTask._id);
     setTasks(filteredTasks);
 
-    fetch(`http://localhost:5000/todos/${singleTask._id}`, {
+    fetch(`https://tasker-job-backend.vercel.app/todos/${singleTask._id}`, {
       method: "DELETE",
       credentials: "include",
     })
