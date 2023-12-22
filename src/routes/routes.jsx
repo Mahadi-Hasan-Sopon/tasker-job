@@ -53,6 +53,11 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Dashboard />,
+            loader: () => {
+              return fetch("http://localhost:5000/todos", {
+                credentials: "include",
+              });
+            },
           },
           {
             path: "todo/new",

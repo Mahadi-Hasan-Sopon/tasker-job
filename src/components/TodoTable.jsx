@@ -1,15 +1,16 @@
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
+import Swal from "sweetalert2";
 const initialTasks = [
-  { id: 1, name: "Task 1", status: "inprogress" },
-  { id: 2, name: "Task 2", status: "completed" },
-  { id: 3, name: "Task 3", status: "todo" },
-  { id: 4, name: "Task 4", status: "todo" },
+  { _id: 1, name: "Task 1", status: "inprogress" },
+  { _id: 2, name: "Task 2", status: "completed" },
+  { _id: 3, name: "Task 3", status: "todo" },
+  { _id: 4, name: "Task 4", status: "todo" },
 ];
 /* eslint-disable react/prop-types */
-const TodoTable = () => {
-  const [tasks, setTasks] = useState(initialTasks);
+const TodoTable = ({ allTodos }) => {
+  const [tasks, setTasks] = useState(allTodos || initialTasks);
   const [todos, setTodos] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [completed, setCompleted] = useState([]);
@@ -34,7 +35,7 @@ const TodoTable = () => {
 
   return (
     <div>
-      <div className="tableHeader grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+      <div className="tableHeader grid lg:grid-cols-2 xl:grid-cols-3 gap-2">
         {statuses.map((status, index) => (
           <Section
             key={index}
@@ -76,15 +77,46 @@ const Section = ({ status, todos, inProgress, completed, tasks, setTasks }) => {
   }
 
   const addItemToSection = (id) => {
-    // console.log("dropped item - ", id, status);
+    console.log("dropped item - ", id, status);
     setTasks((prevTasks) => {
       const modifiedTask = prevTasks.map((oneTask) => {
-        if (oneTask.id === id) {
+        if (oneTask._id === id) {
           return { ...oneTask, status: status };
         }
         return oneTask;
       });
-      // update task to db
+      console.log("modified task - ", modifiedTask);
+      // update task status to db
+      fetch(`http://localhost:5000/todos/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: status }),
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          // console.log(data);
+          if (data.modifiedCount > 0) {
+            Swal.fire({
+              icon: "success",
+              title: "Task updated successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: `${err?.message && err.message}. Please try again later.}`,
+            footer: `<a href="/">Why do I have this issue?</a>`,
+          });
+          console.log(err);
+        });
+      console.log(`Task ${id} updated to ${status}`);
 
       // modified task
       return modifiedTask;
@@ -148,14 +180,14 @@ const Header = ({ title, bg, count, tasksToMap, tasks, setTasks }) => {
 const SingleTask = ({ singleTask, tasks, setTasks }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "task",
-    item: { id: singleTask?.id },
+    item: { id: singleTask?._id },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),
   }));
 
   const handleRemoveTask = () => {
-    const filteredTasks = tasks.filter((task) => task.id !== singleTask.id);
+    const filteredTasks = tasks.filter((task) => task._id !== singleTask._id);
     setTasks(filteredTasks);
   };
 
@@ -166,7 +198,7 @@ const SingleTask = ({ singleTask, tasks, setTasks }) => {
         isDragging ? "opacity-50" : "opacity-100"
       } w-full bg-slate-100 py-3 px-4 rounded-md flex justify-between items-center gap-4 cursor-grab`}
     >
-      <span className="">{singleTask.name}</span>
+      <span className="">{singleTask.todoTitle}</span>
       <div className="flex gap-3">
         <EditOutlined className="text-blue-500 cursor-pointer text-xl" />
         <DeleteOutlined

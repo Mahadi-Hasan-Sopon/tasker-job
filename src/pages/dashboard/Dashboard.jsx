@@ -3,9 +3,12 @@ import { Helmet } from "react-helmet";
 import TodoTable from "../../components/TodoTable";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Dashboard = () => {
+  const loadedTodos = useLoaderData();
+  console.log(loadedTodos);
+
   return (
     <div>
       <Helmet>
@@ -24,7 +27,7 @@ const Dashboard = () => {
         </button>
       </div>
       <DndProvider backend={HTML5Backend}>
-        <TodoTable />
+        <TodoTable allTodos={loadedTodos} />
       </DndProvider>
     </div>
   );
