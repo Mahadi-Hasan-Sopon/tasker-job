@@ -141,7 +141,7 @@ const Navbar = () => {
                   ? "font-medium bg-base-100 text-blue-500"
                   : ""
               }
-              to="/register"
+              to="/signup"
             >
               <div className="flex items-center justify-center gap-2 py-2 px-3 rounded-md hover:text-white hover:bg-blue-500">
                 <UserAddOutlined className="text-xl block -mt-1" />
