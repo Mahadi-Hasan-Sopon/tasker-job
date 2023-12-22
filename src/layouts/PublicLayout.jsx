@@ -4,10 +4,10 @@ import Footer from "../components/shared/Footer";
 
 const PublicLayout = () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {/* NavBar.jsx */}
       <Navbar />
-      <div className="outlet min-h-[calc(100vh-80px)]">
+      <div className="outlet min-h-[calc(100vh-100px)]">
         <Outlet />
       </div>
       {/* Footer.jsx */}
