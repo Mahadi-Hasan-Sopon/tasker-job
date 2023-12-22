@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
 import { Divider } from "antd";
 import {
@@ -10,12 +10,21 @@ import useAuth from "../hooks/useAuth";
 
 const DashboardSidebar = () => {
   const { logOutUser } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logOutUser().then(() => {
+      navigate("/");
+    });
+  };
 
   return (
-    <div className="dashboard-sidebar flex flex-col gap-4 justify-center list-none h-full">
+    <div className="dashboard-sidebar flex flex-col gap-4 justify-center list-none h-full  w-full">
       <Link to="/" className="logo flex items-center gap-2 cursor-pointer">
         <img src={Logo} alt="" className="w-10 h-10 block mr-2" />
-        <h1 className="block text-2xl sm:text-3xl font-bold ">Tasker</h1>
+        <h1 className="hidden md:block text-2xl sm:text-3xl font-bold ">
+          Tasker
+        </h1>
       </Link>
       <Divider className="my-2" />
 
@@ -54,7 +63,7 @@ const DashboardSidebar = () => {
 
       <div className="logout flex justify-center w-full">
         <button
-          onClick={() => logOutUser()}
+          onClick={handleLogout}
           type="button"
           className="opacity-100 font-medium text-red-400 w-full border border-red-300 rounded-md"
         >

@@ -8,6 +8,7 @@ import PublicLayout from "../layouts/PublicLayout";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Pricing from "../pages/pricing/Pricing";
+import CreateTodo from "../components/CreateTodo";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Dashboard />,
+          },
+          {
+            path: "todo/new",
+            element: <CreateTodo />,
           },
         ],
       },
