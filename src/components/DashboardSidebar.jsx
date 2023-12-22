@@ -6,8 +6,11 @@ import {
   HomeOutlined,
   PoweroffOutlined,
 } from "@ant-design/icons";
+import useAuth from "../hooks/useAuth";
 
 const DashboardSidebar = () => {
+  const { logOutUser } = useAuth();
+
   return (
     <div className="dashboard-sidebar flex flex-col gap-4 justify-center list-none h-full">
       <Link to="/" className="logo flex items-center gap-2 cursor-pointer">
@@ -51,7 +54,7 @@ const DashboardSidebar = () => {
 
       <div className="logout flex justify-center w-full">
         <button
-          onClick={""}
+          onClick={() => logOutUser()}
           type="button"
           className="opacity-100 font-medium text-red-400 w-full border border-red-300 rounded-md"
         >
