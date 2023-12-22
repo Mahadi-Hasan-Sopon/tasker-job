@@ -85,7 +85,7 @@ const Home = () => {
               <Image className="w-full h-full" src={ChecklistImage2}></Image>
             </Col>
             <Col md={12} className="space-y-6 items-center">
-              <div className="flex justify-center flex-col h-full space-y-8 w-9/12 ms-auto">
+              <div className="flex justify-center flex-col h-full space-y-8 w-full md:w-9/12 ms-auto">
                 <Title level={2} className="lg:text-left font-inter">
                   Prioritize tasks and keep your team aligned
                 </Title>
@@ -167,7 +167,7 @@ const Home = () => {
               <Image className="w-full h-full" src={LeadImage}></Image>
             </Col>
             <Col md={12} className="space-y-6 items-center">
-              <div className="flex justify-center flex-col h-full space-y-8 w-10/12 ms-auto">
+              <div className="flex items-center md:items-start justify-center flex-col h-full space-y-8 w-full md:w-10/12 ms-auto">
                 <p className="text-2xl text-slate-500 font-medium">
                   Get to Know Task Management
                 </p>
